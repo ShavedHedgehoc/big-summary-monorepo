@@ -1,28 +1,64 @@
-# 1. Этап Prune (вырезаем только нужные пакеты)
+# # 1. Этап Prune (вырезаем только нужные пакеты)
+# FROM node:20-alpine AS pruner
+# RUN npm install -g turbo
+# WORKDIR /app
+# COPY . .
+# # Генерируем "урезанную" версию монорепозитория для конкретного приложения
+# RUN turbo prune "@big-summary-monorepo/public_api" --docker
+
+# # 2. Этап Installer
+# FROM node:20-alpine AS installer
+# WORKDIR /app
+# COPY --from=pruner /app/out/json/ .
+# COPY --from=pruner /app/out/pnpm-lock.yaml ./
+# RUN npm install -g pnpm && pnpm install --frozen-lockfile
+
+# # 3. Этап Builder
+# COPY --from=pruner /app/out/full/ .
+# RUN pnpm turbo build --filter="@big-summary-monorepo/public_api"
+
+# # 4. Этап Runner
+# FROM node:20-alpine AS runner
+# WORKDIR /app
+# COPY --from=installer /app/apps/public_api/dist ./dist
+# COPY --from=installer /app/node_modules ./node_modules
+# # Не забудьте скопировать package.json для резолвинга модулей
+# COPY --from=installer /app/apps/public_api/package.json .
+
+# CMD ["node", "dist/main.js"]
+# 1. Prune (Оставляем только связи для public_api)
 FROM node:20-alpine AS pruner
 RUN npm install -g turbo
 WORKDIR /app
 COPY . .
-# Генерируем "урезанную" версию монорепозитория для конкретного приложения
 RUN turbo prune "@big-summary-monorepo/public_api" --docker
 
-# 2. Этап Installer
-FROM node:20-alpine AS installer
+# 2. Builder
+FROM node:20-alpine AS builder
 WORKDIR /app
+RUN npm install -g pnpm
 COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/pnpm-lock.yaml ./
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
-# 3. Этап Builder
 COPY --from=pruner /app/out/full/ .
 RUN pnpm turbo build --filter="@big-summary-monorepo/public_api"
 
-# 4. Этап Runner
+# Удаляем dev-зависимости, чтобы уменьшить размер
+RUN pnpm install --prod --frozen-lockfile
+
+# 3. Runner (Минимальный образ)
 FROM node:20-alpine AS runner
 WORKDIR /app
-COPY --from=installer /app/apps/public_api/dist ./dist
-COPY --from=installer /app/node_modules ./node_modules
-# Не забудьте скопировать package.json для резолвинга модулей
-COPY --from=installer /app/apps/public_api/package.json .
+ENV NODE_ENV=production
+
+# Копируем только то, что подготовил turbo prune в папке out/full
+# Это включает зависимости и локальные пакеты (например, packages/db)
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/public_api/dist ./dist
+COPY --from=builder /app/apps/public_api/package.json ./package.json
+
+# Если public_api зависит от вашего пакета db, копируем и его (скомпилированного)
+# COPY --from=builder /app/packages/db/dist ./packages/db/dist
 
 CMD ["node", "dist/main.js"]
