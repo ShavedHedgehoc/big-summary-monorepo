@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import * as cookieParser from 'cookie-parser';
-// import * as bodyParser from 'body-parser';
 import { json, urlencoded } from 'body-parser';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';

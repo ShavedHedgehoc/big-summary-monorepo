@@ -6,6 +6,18 @@
       "entry": ["src/main.ts"],
       "project": ["src/**/*.ts"],
       "ignoreDependencies": ["pg", "pg-hstore"]
+    },
+    "apps/api": {
+      "entry": ["src/main.ts"],
+      "project": ["src/**/*.ts"],
+      "ignoreDependencies": [
+        "pg",
+        "pg-hstore",
+        "mssql",
+        "@sequelize/mssql",
+        "swagger-ui-express",
+        "@types/sequelize"
+      ]
     }
   }
 }

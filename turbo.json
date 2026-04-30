@@ -12,12 +12,26 @@
       "cache": false,
       "persistent": true,
       "env": [
+        "API_PORT",
         "PUBLIC_API_PORT",
         "POSTGRES_HOST",
         "POSTGRES_PORT",
         "POSTGRES_USERNAME",
         "POSTGRES_PASSWORD",
-        "POSTGRES_DB"
+        "POSTGRES_DB",
+        "MSSQL_HOST",
+        "MSSQL_USERNAME",
+        "MSSQL_PASSWORD",
+        "MSSQL_DB",
+        "API_PORT",
+        "BOT_TOKEN",
+        "CHAT_ID",
+        "KLP_TECHNOLOGIST_CHAT_ID",
+        "PSK_TECHNOLOGIST_CHAT_ID",
+        "KLP_PACKAGING_CHAT_ID",
+        "PSK_PACKAGING_CHAT_ID",
+        "EXPRESS_API_URL",
+        "EXPRESS_API_TOKEN"
       ]
     },
     "lint": {

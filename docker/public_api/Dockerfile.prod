@@ -25,12 +25,9 @@ ENV CI=true
 COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/pnpm-lock.yaml ./
 
-# ЭТО РЕШИТ ПРОБЛЕМУ: отключаем симлинки и делаем плоский node_modules
 RUN pnpm config set node-linker hoisted && \
     pnpm install --prod --frozen-lockfile
 
-# Копируем dist (он должен лежать в корне для простоты запуска)
 COPY --from=builder /app/apps/public_api/dist ./dist
 
-# Запускаем напрямую
 CMD ["node", "dist/main.js"]
