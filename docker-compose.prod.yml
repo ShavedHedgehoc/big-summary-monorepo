@@ -2,6 +2,7 @@ services:
   postgres:
     container_name: postgres_container
     image: postgres:16.2-alpine
+    pull_policy: if_not_present
     logging:
       driver: 'json-file'
       options:
@@ -20,6 +21,7 @@ services:
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4:9.14
+    pull_policy: if_not_present
     logging:
       driver: 'json-file'
       options:
@@ -41,6 +43,7 @@ services:
 
   api:
     container_name: api_container
+    pull_policy: if_not_present
     build:
       context: .
       dockerfile: docker/api/Dockerfile.prod
@@ -80,6 +83,7 @@ services:
 
   public_api:
     container_name: public_api_container
+    pull_policy: if_not_present
     build:
       context: .
       dockerfile: docker/public_api/Dockerfile.prod

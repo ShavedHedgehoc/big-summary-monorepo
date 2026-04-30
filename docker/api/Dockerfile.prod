@@ -28,7 +28,7 @@ COPY --from=pruner /app/out/pnpm-lock.yaml ./
 
 RUN pnpm config set node-linker hoisted && \
     pnpm install --prod --frozen-lockfile
-COPY --from=builder /app/apps/public_api/dist ./dist
+COPY --from=builder /app/apps/api/dist ./dist
 
 
 CMD ["node", "dist/main.js"]
