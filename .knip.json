@@ -16,7 +16,8 @@
         "mssql",
         "@sequelize/mssql",
         "swagger-ui-express",
-        "@types/sequelize"
+        "@types/sequelize",
+        "source-map-support"
       ]
     }
   }

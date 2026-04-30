@@ -1,4 +1,3 @@
-import 'source-map-support/register';
 import { NestFactory } from '@nestjs/core';
 import { json, urlencoded } from 'body-parser';
 import AppModule from './app.module';
