@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com",
+  "workspaces": {
+    ".": {},
+    "apps/public_api": {
+      "entry": ["src/main.ts"],
+      "project": ["src/**/*.ts"]
+    }
+  }
+}

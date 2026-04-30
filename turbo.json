@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build.json",
+  "ui": "stream",
+  "globalEnv": ["NODE_ENV"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "db:generate": {},
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": [
+        "PUBLIC_API_PORT",
+        "POSTGRES_HOST",
+        "POSTGRES_PORT",
+        "POSTGRES_USERNAME",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_DB"
+      ]
+    },
+    "lint": {
+      "cache": true,
+      "outputs": []
+    },
+    "type-check": {
+      "cache": true,
+      "dependsOn": ["^type-check"]
+    }
+  }
+}
