@@ -16,26 +16,21 @@ RUN pnpm install --frozen-lockfile
 COPY --from=pruner /app/out/full/ .
 RUN pnpm turbo build --filter="@big-summary-monorepo/public_api"
 
-# 3. Runner
 FROM node:20-alpine AS runner
 WORKDIR /app
 RUN npm install -g pnpm
 ENV NODE_ENV=production
+ENV CI=true
 
-# Копируем файлы конфигурации для установки только prod-зависимостей
 COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/pnpm-lock.yaml ./
 
-# Устанавливаем ТОЛЬКО продакшн зависимости прямо здесь
-# Это гарантирует правильные пути к @nestjs/core
-# В этапе runner
-RUN CI=true pnpm install --prod --frozen-lockfile
+# ЭТО РЕШИТ ПРОБЛЕМУ: отключаем симлинки и делаем плоский node_modules
+RUN pnpm config set node-linker hoisted && \
+    pnpm install --prod --frozen-lockfile
 
-
-# Копируем скомпилированный код из builder
+# Копируем dist (он должен лежать в корне для простоты запуска)
 COPY --from=builder /app/apps/public_api/dist ./dist
 
-# Указываем путь, чтобы Node.js понимал, где искать пакеты в монорепозитории
-ENV NODE_PATH=./node_modules
-
+# Запускаем напрямую
 CMD ["node", "dist/main.js"]
