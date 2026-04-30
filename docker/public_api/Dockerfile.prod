@@ -35,6 +35,7 @@ RUN turbo prune "@big-summary-monorepo/public_api" --docker
 
 # 2. Builder
 FROM node:20-alpine AS builder
+ENV CI=true 
 WORKDIR /app
 RUN npm install -g pnpm
 COPY --from=pruner /app/out/json/ .
