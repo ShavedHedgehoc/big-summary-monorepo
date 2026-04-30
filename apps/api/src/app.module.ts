@@ -272,4 +272,4 @@ dateProto._stringify = function _stringify(this: any, date: any, options: any): 
     HealthCheckModule,
   ],
 })
-export default class AppModule {}
+export default class AppModule { }
