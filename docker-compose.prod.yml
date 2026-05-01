@@ -112,23 +112,23 @@ services:
     networks:
       - postgres
       - general
-  # app:
-  #   container_name: app_container
-  #   build:
-  #     context: .
-  #     dockerfile: docker/application/Dockerfile.prod
-  #     args:
-  #       - NODE_ENV=production
-  #   logging:
-  #     driver: "json-file"
-  #     options:
-  #       max-size: "10m"
-  #       max-file: "3"
-  #   depends_on:
-  #     - api
-  #   restart: always
-  #   networks:
-  #     - general
+  app:
+    container_name: app_container
+    build:
+      context: .
+      dockerfile: docker/application/Dockerfile.prod
+      args:
+        - NODE_ENV=production
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    depends_on:
+      - api
+    restart: always
+    networks:
+      - general
 
   workstation:
     container_name: ws_container
