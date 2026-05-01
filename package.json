@@ -2,7 +2,6 @@
   "name": "big-summary-monorepo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "dotenv -e .env.development -- turbo dev",
     "build": "turbo build",

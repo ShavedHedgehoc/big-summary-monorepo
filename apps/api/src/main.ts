@@ -12,7 +12,7 @@ import { TraceTrademarksModule } from './trace_trademarks/trace_trademarks.modul
 import cookieParser from 'cookie-parser';
 
 async function start() {
-  const PORT = process.env.API_PORT || 5000;
+  const PORT = process.env.API_PORT || 7000;
   const app = await NestFactory.create(AppModule, { logger: ['error'] });
 
   app.setGlobalPrefix('api');

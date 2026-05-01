@@ -21,17 +21,17 @@ export default class Conveyor extends Model<Conveyor, ConveyorsCreationsAttrs> {
   @PrimaryKey
   @AutoIncrement
   @Column({ type: DataType.INTEGER, unique: true })
-  id: number;
+  id!: number;
 
   @ApiProperty({ example: '118', description: 'Конвейер' })
   @AllowNull(false)
   @Column({ type: DataType.STRING, unique: true })
-  value: string;
+  value!: string;
 
   @ApiProperty({ example: '2000000000012', description: 'Штрихкод' })
   @Column({ type: DataType.STRING, unique: true })
-  barcode: string;
+  barcode!: string;
 
   @HasMany(() => Record)
-  records: Record[];
+  records!: Record[];
 }

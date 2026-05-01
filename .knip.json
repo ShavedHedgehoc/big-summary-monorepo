@@ -3,13 +3,24 @@
   "workspaces": {
     ".": {},
     "apps/public_api": {
-      "entry": ["src/main.ts"],
-      "project": ["src/**/*.ts"],
-      "ignoreDependencies": ["pg", "pg-hstore"]
+      "entry": [
+        "src/main.ts"
+      ],
+      "project": [
+        "src/**/*.ts"
+      ],
+      "ignoreDependencies": [
+        "pg",
+        "pg-hstore"
+      ]
     },
     "apps/api": {
-      "entry": ["src/main.ts"],
-      "project": ["src/**/*.ts"],
+      "entry": [
+        "src/main.ts"
+      ],
+      "project": [
+        "src/**/*.ts"
+      ],
       "ignoreDependencies": [
         "pg",
         "pg-hstore",
@@ -18,6 +29,48 @@
         "swagger-ui-express",
         "@types/sequelize",
         "source-map-support"
+      ]
+    },
+    "apps/workstation": {
+      "entry": [
+        "src/main.{ts,tsx}"
+      ],
+      "project": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "ignoreDependencies": [
+        "@fontsource/roboto"
+      ]
+    },
+    "apps/dash": {
+      "entry": [
+        "src/main.{ts,tsx}"
+      ],
+      "project": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "ignoreDependencies": [],
+      "ignore": [
+        "src/modules/app-summary/**/*",
+        "src/modules/apparatus/**/*",
+        "src/shared/api/use-employee.ts",
+        "src/shared/api/use-regulation.ts",
+        "src/shared/api/services/employee-service.ts",
+        "src/shared/api/services/regulation-service.ts",
+        "src/shared/components/icons/cross-icon.tsx",
+        "src/shared/components/icons/funnel-icon.tsx"
+      ]
+    },
+    "apps/application": {
+      "entry": [
+        "src/main.{ts,tsx}!"
+      ],
+      "project": [
+        "src/**/*.{ts,tsx}!"
+      ],
+      "ignoreDependencies": [],
+      "ignore": [
+        "src/shared/types/types.d.ts"
       ]
     }
   }
