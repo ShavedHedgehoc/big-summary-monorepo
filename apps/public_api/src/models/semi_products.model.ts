@@ -26,15 +26,15 @@ export default class SemiProduct extends Model<SemiProduct, SemiProductCreations
   id!: number;
 
   @ForeignKey(() => Record)
-  @Column
+  @Column({ type: DataType.NUMBER })
   record_id!: number;
 
   @ForeignKey(() => Product)
-  @Column
+  @Column({ type: DataType.NUMBER })
   product_id!: number;
 
   @ForeignKey(() => Boil)
-  @Column
+  @Column({ type: DataType.NUMBER })
   boil_id!: number;
 
   @BelongsTo(() => Record)

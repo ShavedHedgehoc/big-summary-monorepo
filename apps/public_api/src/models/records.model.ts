@@ -48,30 +48,30 @@ export default class Record extends Model<Record, RecordsCreationsAttrs> {
   id!: number;
 
   @ForeignKey(() => Doc)
-  @Column
+  @Column({ type: DataType.NUMBER })
   doc_id!: number;
 
   @ForeignKey(() => Product)
-  @Column
+  @Column({ type: DataType.NUMBER })
   productId!: number;
 
   @ForeignKey(() => Boil)
-  @Column
+  @Column({ type: DataType.NUMBER })
   boilId!: number;
 
   @BelongsTo(() => Boil, 'boilId')
   boil!: Boil;
 
   @ForeignKey(() => Apparatus)
-  @Column
+  @Column({ type: DataType.NUMBER })
   apparatusId!: number;
 
   @ForeignKey(() => Can)
-  @Column
+  @Column({ type: DataType.NUMBER })
   canId!: number;
 
   @ForeignKey(() => Conveyor)
-  @Column
+  @Column({ type: DataType.NUMBER })
   conveyorId!: number;
 
   @AllowNull(false)
@@ -92,25 +92,25 @@ export default class Record extends Model<Record, RecordsCreationsAttrs> {
   note!: string;
 
   @ForeignKey(() => Workshop)
-  @Column
+  @Column({ type: DataType.NUMBER })
   workshopId!: number;
 
   @ForeignKey(() => Boil)
-  @Column
+  @Column({ type: DataType.NUMBER })
   water_base_id!: number;
 
   @BelongsTo(() => Boil, 'water_base_id')
   water_base!: Boil;
 
   @ForeignKey(() => Boil)
-  @Column
+  @Column({ type: DataType.NUMBER })
   organic_base_id!: number;
 
   @BelongsTo(() => Boil, 'organic_base_id')
   organic_base!: Boil;
 
   @Default(false)
-  @Column
+  @Column({ type: DataType.NUMBER })
   isSet!: boolean;
 
   @BelongsTo(() => Doc)

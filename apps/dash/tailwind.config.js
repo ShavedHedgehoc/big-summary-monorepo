@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+// /** @type {import('tailwindcss').Config} */
+import tailwindScrollbar from 'tailwind-scrollbar'; // Импортируем плагин
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -8,9 +9,6 @@ export default {
         slide1: {
           '0%': { transform: 'translateY(0%)' },
           '100%': { transform: 'translateY(-100%)' },
-          // "100%": { transform: "translateY(0)" },
-          // "0%": { transform: "translateY(0%)" },
-          // "100%": { transform: "translateY(-100%)" },
         },
         slide2: {
           '0%': { transform: 'translateY(100%)' },
@@ -18,12 +16,12 @@ export default {
         },
       },
       animation: {
-        slide1: 'slide1',
-        slide2: 'slide2',
+        slide1: 'slide1 1s ease-in-out infinite', // Добавьте параметры анимации, иначе она не запустится
+        slide2: 'slide2 1s ease-in-out infinite',
       },
     },
   },
   plugins: [
-    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements', nocompatible: true }),
+    tailwindScrollbar({ preferredStrategy: 'pseudoelements', nocompatible: true }),
   ],
 };

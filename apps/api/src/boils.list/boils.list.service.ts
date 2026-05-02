@@ -53,7 +53,7 @@ export class BoilsListService {
     private historiesService: HistoriesService,
     private basesService: BasesService,
     private plantService: PlantsService,
-  ) {}
+  ) { }
 
   private async boilResult(item: Boil): Promise<BoilResultDto> {
     const [records, histories, base, plant] = await Promise.all([
@@ -70,7 +70,8 @@ export class BoilsListService {
     const stateValue = lastHistory?.historyType?.value ?? null;
 
     return {
-      ...item,
+      id: item.id,
+      value: item.value,
       base_code: base ? base.code : null,
       base_marking: base ? base.marking : null,
       recordsCount: records.length,
@@ -99,7 +100,8 @@ export class BoilsListService {
     const state = lastHistory?.historyType?.description ?? '-';
     const stateValue = lastHistory?.historyType?.value ?? null;
     return {
-      ...item,
+      id: item.id,
+      value: item.value,
       base_code: base?.code ?? null,
       base_marking: base?.marking ?? null,
       recordsCount: records.length,

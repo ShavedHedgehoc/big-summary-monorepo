@@ -1,0 +1,21 @@
+{
+  "name": "@big-summary-monorepo/db-mssql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "db:generate": "dotenv -e ../../../.env.development -- prisma generate",
+    "db:pull": "dotenv -e ../../../.env.development -- prisma db pull"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.2",
+  "devDependencies": {
+    "prisma": "^6.19.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  }
+}

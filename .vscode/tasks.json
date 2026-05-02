@@ -1,14 +1,22 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // {
-    //   "label": "Prisma: Generate Client",
-    //   "type": "shell",
-    //   "command": "npx turbo run generate",
-    //   "problemMatcher": [],
-    //   "group": "build",
-    //   "detail": "Генерирует типы Prisma для всех пакетов"
-    // },
+    {
+      "label": "Prisma: Generate Client",
+      "type": "shell",
+      "command": "pnpm db:generate",
+      "problemMatcher": [],
+      "group": "build",
+      "detail": "Генерирует типы Prisma для всех пакетов"
+    },
+    {
+      "label": "Prisma: Migrate Dev",
+      "type": "shell",
+      "command": "pnpm db:migrate:dev",
+      "problemMatcher": [],
+      "group": "build",
+      "detail": "Добавляет миграции в базу PG"
+    },
     {
       "label": "DEV: Run all",
       "type": "shell",

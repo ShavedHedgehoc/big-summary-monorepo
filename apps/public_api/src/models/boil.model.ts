@@ -36,11 +36,11 @@ export default class Boil extends Model<Boil, BoilsCreationsAttrs> {
   value!: string;
 
   @ForeignKey(() => Base)
-  @Column
+  @Column({ type: DataType.NUMBER })
   base_id!: number;
 
   @ForeignKey(() => Plant)
-  @Column
+  @Column({ type: DataType.NUMBER })
   plant_id!: number;
 
   @Column({ type: DataType.STRING })

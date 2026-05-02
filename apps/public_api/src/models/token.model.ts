@@ -25,7 +25,7 @@ export default class Token extends Model<Token, TokenCreationsAttrs> {
   id!: number;
 
   @ForeignKey(() => User)
-  @Column
+  @Column({ type: DataType.NUMBER })
   userId!: number;
 
   @AllowNull(false)

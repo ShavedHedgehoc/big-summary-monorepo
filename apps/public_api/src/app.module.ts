@@ -40,6 +40,8 @@ import { CountersController } from './counters/counters.controller';
 import { ConveyorsController } from './conveyors/conveyors.controller';
 import { ConveyorTasksController } from './conveyor_tasks/conveyor_tasks.controller';
 import { join } from 'path';
+import { TrpcService } from './trpc/trpc.service';
+
 
 @Module({
   imports: [
@@ -90,8 +92,9 @@ import { join } from 'path';
     HistoryTypesModule,
     ProductsModule,
     BoilsModule,
+
   ],
   controllers: [ConveyorsController, ConveyorTasksController, CountersController],
-  providers: [AppService],
+  providers: [AppService, TrpcService],
 })
-export class AppModule {}
+export class AppModule { }

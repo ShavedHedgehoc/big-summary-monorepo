@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import { json, urlencoded } from 'body-parser';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { TrpcService } from './trpc/trpc.service';
 
 async function bootstrap() {
   const PORT = process.env.PUBLIC_API_PORT || 8000;
@@ -20,6 +21,9 @@ async function bootstrap() {
   app.use(cookieParser());
   app.use(json({ limit: '10mb' }));
   app.use(urlencoded({ limit: '10mb', extended: true }));
+  const trpcService = app.get(TrpcService);
+  trpcService.applyMiddleware(app);
+
   await app.listen(PORT, () => console.log(`API started on ${PORT}`));
 }
 bootstrap().catch((err) => {

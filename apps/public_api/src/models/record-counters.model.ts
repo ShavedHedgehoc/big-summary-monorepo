@@ -29,7 +29,7 @@ export default class RecordCounter extends Model<RecordCounter, RecordCounterCre
 
   @ApiProperty({ example: 15, description: 'id строки сводки' })
   @ForeignKey(() => Record)
-  @Column
+  @Column({ type: DataType.NUMBER })
   record_id!: number;
 
   @ApiProperty({
@@ -37,7 +37,7 @@ export default class RecordCounter extends Model<RecordCounter, RecordCounterCre
     description: 'uuid задачи маркировки',
   })
   @Unique
-  @Column
+  @Column({ type: DataType.STRING })
   task_uid!: string;
 
   @ApiProperty({ example: 15, description: 'Значение счетчика' })

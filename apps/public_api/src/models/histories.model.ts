@@ -38,27 +38,27 @@ export default class History extends Model<History, HistoriesCreationsAttrs> {
 
   @ApiProperty({ example: '1', description: 'id строки сводки' })
   @ForeignKey(() => Record)
-  @Column
+  @Column({ type: DataType.NUMBER })
   record_id!: number;
 
   @ApiProperty({ example: '1', description: 'id партии' })
   @ForeignKey(() => Boil)
-  @Column
+  @Column({ type: DataType.NUMBER })
   boil_id!: number;
 
   @ApiProperty({ example: '1', description: 'id типа записи' })
   @ForeignKey(() => HistoryType)
-  @Column
+  @Column({ type: DataType.NUMBER })
   historyTypeId!: number;
 
   @ApiProperty({ example: '1', description: 'id пользователя' })
   @ForeignKey(() => User)
-  @Column
+  @Column({ type: DataType.NUMBER })
   userId!: number;
 
   @ApiProperty({ example: '1', description: 'id пользователя рабочей станции' })
   @ForeignKey(() => Employee)
-  @Column
+  @Column({ type: DataType.NUMBER })
   employeeId!: number;
 
   @ApiProperty({ example: 'Комментарий к записи', description: 'Комментарий к записи' })
@@ -67,11 +67,11 @@ export default class History extends Model<History, HistoriesCreationsAttrs> {
 
   @ApiProperty({ example: '1', description: 'id пользователя рабочей станции' })
   @ForeignKey(() => Note)
-  @Column
+  @Column({ type: DataType.NUMBER })
   note_id!: number;
 
   @ForeignKey(() => Plant)
-  @Column
+  @Column({ type: DataType.NUMBER })
   plant_id!: number;
 
   @BelongsTo(() => Record)

@@ -37,3 +37,11 @@ coverage/
 
 # Временные файлы TypeScript
 *.tsbuildinfo
+
+# Игнорируем результаты компиляции везде
+*.js
+*.js.map
+*.d.ts
+# Но НЕ игнорируем саму папку с исходниками и сгенерированного клиента Prisma
+!packages/database/*/generated/**/*
+

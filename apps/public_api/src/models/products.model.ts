@@ -51,7 +51,7 @@ export default class Product extends Model<Product, ProductCreationsAttrs> {
   name!: string;
 
   @ForeignKey(() => Serie)
-  @Column
+  @Column({ type: DataType.NUMBER })
   serieId!: number;
 
   @BelongsTo(() => Serie)

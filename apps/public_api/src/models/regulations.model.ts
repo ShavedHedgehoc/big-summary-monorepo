@@ -35,7 +35,7 @@ export default class Regulation extends Model<Regulation, RegulationCreationsAtt
   id!: number;
 
   @ForeignKey(() => Product)
-  @Column
+  @Column({ type: DataType.NUMBER })
   product_id!: number;
 
   @Column({ type: DataType.DECIMAL })
@@ -66,7 +66,7 @@ export default class Regulation extends Model<Regulation, RegulationCreationsAtt
   packaging_note!: string;
 
   @ForeignKey(() => MarkingSample)
-  @Column
+  @Column({ type: DataType.NUMBER })
   marking_sample_id!: number;
 
   @BelongsTo(() => Product)

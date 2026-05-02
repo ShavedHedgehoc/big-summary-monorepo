@@ -28,11 +28,11 @@ export default class Base extends Model<Base, BasesCreationsAttrs> {
   @ApiProperty({ example: '053456', description: 'Шестизначный код 1С' })
   @AllowNull(false)
   @Unique(true)
-  @Column
+  @Column({ type: DataType.STRING })
   code!: string;
 
   @ApiProperty({ example: 'PC10/16', description: 'Артикул основы' })
-  @Column
+  @Column({ type: DataType.STRING })
   marking!: string;
 
   @HasOne(() => Boil)

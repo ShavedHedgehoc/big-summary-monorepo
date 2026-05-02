@@ -40,7 +40,7 @@ export default class RecordRegulation extends Model<
   id!: number;
 
   @ForeignKey(() => Record)
-  @Column
+  @Column({ type: DataType.NUMBER })
   record_id!: number;
 
   @Column({ type: DataType.DECIMAL })
@@ -77,7 +77,7 @@ export default class RecordRegulation extends Model<
   packaging_note!: string;
 
   @ForeignKey(() => MarkingSample)
-  @Column
+  @Column({ type: DataType.NUMBER })
   marking_sample_id!: number;
 
   @Column({ type: DataType.STRING })

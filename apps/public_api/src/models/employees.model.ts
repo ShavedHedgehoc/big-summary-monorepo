@@ -38,7 +38,7 @@ export default class Employee extends Model<Employee, EmployeeCreationsAttrs> {
   barcode!: string;
 
   @ForeignKey(() => Occupation)
-  @Column
+  @Column({ type: DataType.NUMBER })
   occupationId!: number;
 
   @BelongsTo(() => Occupation)

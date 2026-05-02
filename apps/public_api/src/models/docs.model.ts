@@ -29,12 +29,12 @@ export default class Doc extends Model<Doc, DocsCreationsAttrs> {
 
   @ApiProperty({ example: '2', description: 'Уникальный id площадки' })
   @ForeignKey(() => Plant)
-  @Column
+  @Column({ type: DataType.INTEGER })
   plantId!: number;
 
   @ApiProperty({ example: '22-04-2024', description: 'Дата сводки' })
   @AllowNull(false)
-  @Column
+  @Column({ type: DataType.DATE })
   date!: Date;
 
   @BelongsTo(() => Plant)
