@@ -1,0 +1,27 @@
+{
+  "name": "@big-summary-monorepo/db-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "db:generate": "dotenv -e ../../../.env.development -- prisma generate",
+    "db:push": "dotenv -e ../../../.env.development -- prisma db push",
+    "migrate:dev": "dotenv -e ../../../.env.development -- prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy && pnpm db:generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.2",
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "prisma": "^6.19.3"
+  }
+}

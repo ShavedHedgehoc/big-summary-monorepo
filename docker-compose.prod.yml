@@ -120,10 +120,10 @@ services:
       args:
         - NODE_ENV=production
     logging:
-      driver: "json-file"
+      driver: 'json-file'
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: '10m'
+        max-file: '3'
     depends_on:
       - api
     restart: always

@@ -10,7 +10,9 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "knip": "knip",
-    "pre-flight": "npm run format:check && turbo lint type-check && knip && turbo build"
+    "pre-flight": "npm run format:check && turbo lint type-check && knip && turbo build",
+    "db:generate": "turbo run --filter @big-summary-monorepo/db-postgres  db:generate",
+    "db:migrate:dev": "turbo run --filter @big-summary-monorepo/db-postgres  migrate:dev"
   },
   "keywords": [],
   "author": "",

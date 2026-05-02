@@ -105,6 +105,7 @@ import { HealthCheckModule } from './health_check/health_check.module';
 import RecordCounter from './record_counters/record_counters.model';
 import UserSettings from './user-settings/user-settings.model';
 import { join } from 'path';
+import { TrpcModule } from './trpc/trpc.module';
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -270,6 +271,7 @@ dateProto._stringify = function _stringify(this: any, date: any, options: any): 
     TraceDirectConnectionModule,
     UserSettingsModule,
     HealthCheckModule,
+    TrpcModule
   ],
 })
-export default class AppModule {}
+export default class AppModule { }

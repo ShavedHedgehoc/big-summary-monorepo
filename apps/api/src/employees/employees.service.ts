@@ -8,6 +8,7 @@ import Occupation from '../occupations/occupations.model';
 import { GetEmployeesDto } from './dto/get-employees.dto';
 import { Op } from 'sequelize';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { pgPrisma } from '@big-summary-monorepo/db-postgres';
 
 @Injectable()
 export class EmployeesService {
@@ -15,7 +16,7 @@ export class EmployeesService {
     @InjectModel(Employee)
     private employeeRepository: typeof Employee,
     private occupationService: OccupationsService,
-  ) {}
+  ) { }
 
   async createEmployee(dto: CreateEmployeeDto) {
     try {
@@ -39,12 +40,20 @@ export class EmployeesService {
   }
 
   async getAllEmployees() {
-    const employees = await this.employeeRepository.findAll({
-      attributes: ['id', 'name', 'barcode'],
-      include:
-        // { all: true }
-        [{ model: Occupation }],
-    });
+    const employees = pgPrisma.employees.findMany({
+      select: {
+        id: true,
+        name: true,
+        barcode: true,
+        occupations: true, // This fetches the related model
+      }
+    })
+    // const employees = await this.employeeRepository.findAll({
+    //   attributes: ['id', 'name', 'barcode'],
+    //   include:
+    //     // { all: true }
+    //     [{ model: Occupation }],
+    // });
     return employees;
   }
 
