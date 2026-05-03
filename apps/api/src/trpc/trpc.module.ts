@@ -2,12 +2,15 @@
 import { Module } from '@nestjs/common';
 import { TrpcService } from './trpc.service';
 import { TrpcController } from './trpc.controller';
-import { EmployeesModule } from 'src/employees/employees.module';
-// import { ConveyorsModule } from '../conveyors/conveyors.module';
+import { TrpcRouterService } from './trpc.router.service'; // Добавляем этот импорт
+import { EmployeesModule } from '../employees/employees.module'; // Используем относительный путь
 
 @Module({
-    imports: [EmployeesModule], // импортируем модули, чьи сервисы нам нужны
-    providers: [TrpcService],
+    imports: [EmployeesModule],
+    providers: [
+        TrpcService,       // Создает контекст (db, user)
+        TrpcRouterService  // Содержит сам appRouter с логикой
+    ],
     controllers: [TrpcController],
 })
 export class TrpcModule { }

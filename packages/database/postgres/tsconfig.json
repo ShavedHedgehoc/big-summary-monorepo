@@ -1,28 +1,15 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
-        "module": "CommonJS",
-        "moduleResolution": "node",
-        "lib": [
-            "ESNext"
-        ],
-        "rootDir": ".",
         "outDir": "./dist",
         "declaration": true,
-        "sourceMap": true,
-        "strict": true,
+        "baseUrl": ".",
         "skipLibCheck": true,
-        "esModuleInterop": true,
-        "types": [
-            "node"
-        ]
+        "module": "CommonJS",
+        "target": "ES2021",
+        "esModuleInterop": true
     },
     "include": [
         "index.ts",
-        "generated/client/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist"
+        "generated/client/**/*.d.ts"
     ]
 }

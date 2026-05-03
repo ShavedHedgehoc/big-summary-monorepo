@@ -17,6 +17,7 @@
     "test:cov": "jest --coverage"
   },
   "dependencies": {
+    "@aeolun/trpc-ui": "^1.5.0",
     "@big-summary-monorepo/db-postgres": "workspace:*",
     "@big-summary-monorepo/trpc": "workspace:*",
     "@nestjs/axios": "^3.0.2",
@@ -43,8 +44,12 @@
     "sequelize": "^6.37.3",
     "sequelize-typescript": "^2.1.6",
     "swagger-ui-express": "^5.0.0",
+    "trpc-browser": "^1.4.4",
     "trpc-panel": "^1.3.4",
-    "xml-js": "^1.6.11"
+    "trpc-playground": "^1.0.4",
+    "trpc-ui": "^1.0.15",
+    "xml-js": "^1.6.11",
+    "zod": "^4.4.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",

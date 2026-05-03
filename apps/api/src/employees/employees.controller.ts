@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import Employee from './employees.model';
@@ -8,8 +8,6 @@ import { GetEmployeesDto } from './dto/get-employees.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 
 
-import { renderTrpcPanel } from 'trpc-panel';
-import { appRouter } from '@big-summary-monorepo/trpc';
 
 
 
@@ -18,26 +16,7 @@ import { appRouter } from '@big-summary-monorepo/trpc';
 export class EmployeesController {
   constructor(private employeeService: EmployeesService) { }
 
-  @Get('panel')
-  renderPanel() {
-    console.log('1. Метод вызван');
 
-    try {
-      console.log('2. Тип appRouter:', typeof appRouter);
-      const html = renderTrpcPanel(appRouter, { url: 'http://localhost:7000/api/trpc' });
-
-      console.log('3. Результат рендера (длина):', html?.length);
-
-      if (!html || html.length === 0) {
-        return "<h1>Ошибка: Панель вернула пустой HTML</h1><p>Скорее всего, trpc-panel не совместима с tRPC v11.</p>";
-      }
-
-      return html;
-    } catch (e) {
-      console.error('4. Ошибка при рендере:', e);
-      return `<h1>Crash</h1><pre>${e.message}</pre>`;
-    }
-  }
 
 
   @ApiOperation({

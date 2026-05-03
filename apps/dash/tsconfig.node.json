@@ -28,7 +28,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
+    "experimentalDecorators": true, // Разрешить декораторы (уберет ошибки @ApiProperty)
+    "emitDecoratorMetadata": true, // Важно для корректной работы метаданных
+    "noEmit": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts"
+  ]
 }

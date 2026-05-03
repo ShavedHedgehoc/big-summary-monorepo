@@ -40,13 +40,13 @@ export class EmployeesService {
   }
 
   async getAllEmployees() {
-    const employees = pgPrisma.employees.findMany({
-      select: {
-        id: true,
-        name: true,
-        barcode: true,
-        occupations: true, // This fetches the related model
-      }
+    const employees = await pgPrisma.employees.findMany({
+      // select: {
+      //   id: true,
+      //   name: true,
+      //   barcode: true,
+      //   occupations: true, // This fetches the related model
+      // }
     })
     // const employees = await this.employeeRepository.findAll({
     //   attributes: ['id', 'name', 'barcode'],

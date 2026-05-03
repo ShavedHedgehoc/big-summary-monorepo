@@ -1,4 +1,19 @@
 {
   "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@big-summary-monorepo/api": [
+        "../api/src/trpc/trpc.router.service.ts"
+      ],
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

@@ -10,6 +10,7 @@ import { TraceInventoryDocsModule } from './trace_inventory_docs/trace_inventory
 import { TraceInventoryRowsModule } from './trace_inventory_rows/trace_inventory_rows.module';
 import { TraceTrademarksModule } from './trace_trademarks/trace_trademarks.module';
 import cookieParser from 'cookie-parser';
+import { expressHandler } from 'trpc-playground/handlers/express';
 
 async function start() {
   const PORT = process.env.API_PORT || 7000;
@@ -45,6 +46,8 @@ async function start() {
     ],
   });
   SwaggerModule.setup('/api/documentation/trace', app, traceFactory);
+
+
 
   app.use(cookieParser());
   app.use(json({ limit: '10mb' }));

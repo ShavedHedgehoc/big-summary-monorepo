@@ -1,7 +1,6 @@
-// export * from './generated/client';
-// // import { PrismaClient } from './generated/client';
-import { PrismaClient } from './generated/client/index';
+import { PrismaClient } from './generated/client';
 
-export const pgPrisma = new PrismaClient({
-    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-});
+export const pgPrisma = new PrismaClient();
+
+// ЭТО ВАЖНО для VS Code
+export * from './generated/client/index';

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2021",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "declaration": true,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "paths": {
+            "@big-summary-monorepo/db-postgres": [
+                "../database/postgres/index.ts"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

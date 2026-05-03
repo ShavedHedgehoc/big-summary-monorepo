@@ -12,8 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@big-summary-monorepo/api": "workspace:*",
     "@headlessui/react": "^2.2.0",
     "@tanstack/react-query": "^5.60.2",
+    "@trpc/react-query": "^11.17.0",
+    "@trpc/server": "^11.17.0",
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
     "react": "^18.3.1",

@@ -1,1 +1,0 @@
-{"version":3,"file":"conveyors.js","sourceRoot":"","sources":["conveyors.ts"],"names":[],"mappings":";;;AAAA,kCAAkD;AAGrC,QAAA,eAAe,GAAG,IAAA,aAAM,EAAC;IAClC,OAAO,EAAE,sBAAe,CAAC,KAAK,CAAC,KAAK,EAAE,EAAE,GAAG,EAAE,EAAE,EAAE;QAC7C,OAAO,MAAM,GAAG,CAAC,gBAAgB,CAAC,eAAe,EAAE,CAAC;IACxD,CAAC,CAAC;CAGL,CAAC,CAAC"}
